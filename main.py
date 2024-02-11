@@ -22,7 +22,7 @@ def get_sitemap_links(url, all_links = []):
         try:
 
             soup = BeautifulSoup(response.text, 'xml')
-            links = [loc.text for loc in soup.find_all('loc')]
+            links = [loc.text for loc in soup.find_all('loc') if 'wp-content' not in loc.text]
 
         except:
             return
